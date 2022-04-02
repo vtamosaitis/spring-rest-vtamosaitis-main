@@ -1,9 +1,9 @@
 table {
-    height: 1.25em;
     border-collapse: collapse;
 }
 #animals th, #animals td {
 	border: 1px solid #ccbbee;
+	height: 1.25em;
 }
 th {
     background-color: #c1c1df;
