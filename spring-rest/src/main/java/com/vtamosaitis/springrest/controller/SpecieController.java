@@ -19,33 +19,33 @@ import com.vtamosaitis.springrest.service.SpecieService;
 @RequestMapping("/api/specie")
 public class SpecieController {
 
-	private SpecieService specieService;
-	
-	public SpecieController(SpecieService specieService) {
-		super();
-		this.specieService = specieService;
-	}
-	
-	//TODO fix post and put mapping: both enter null values for foreign keys
-	@PostMapping
-	public ResponseEntity<Specie> saveSpecie(@RequestBody Specie specie) { 
-		System.out.println(specie);
-		return new ResponseEntity<Specie>(specieService.saveSpecie(specie), HttpStatus.CREATED);
-	}
-	
-	@GetMapping
-	public List<Specie> all() {
-		return specieService.all();
-	}
-	
-	
-	@GetMapping("{id}")
-	public ResponseEntity<Specie> findById(@PathVariable("id") Long id) {
-		return new ResponseEntity<Specie>(specieService.findById(id), HttpStatus.OK);
-	}
-	
-	@PutMapping("{id}")
-	public ResponseEntity<Specie> updateSpecie(@RequestBody Specie specie, @PathVariable("id") Long id) {
-		return new ResponseEntity<Specie>(specieService.updateSpecie(specie, id), HttpStatus.OK);
-	}
+    private final SpecieService specieService;
+
+    public SpecieController(SpecieService specieService) {
+        super();
+        this.specieService = specieService;
+    }
+
+    //TODO fix post and put mapping: both enter null values for foreign keys
+    @PostMapping
+    public ResponseEntity<Specie> saveSpecie(@RequestBody Specie specie) {
+        System.out.println(specie);
+        return new ResponseEntity<Specie>(specieService.saveSpecie(specie), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public List<Specie> all() {
+        return specieService.all();
+    }
+
+
+    @GetMapping("{id}")
+    public ResponseEntity<Specie> findById(@PathVariable("id") Long id) {
+        return new ResponseEntity<Specie>(specieService.findById(id), HttpStatus.OK);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Specie> updateSpecie(@RequestBody Specie specie, @PathVariable("id") Long id) {
+        return new ResponseEntity<Specie>(specieService.updateSpecie(specie, id), HttpStatus.OK);
+    }
 }

@@ -3,6 +3,8 @@ package com.vtamosaitis.springrest.service;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 import com.vtamosaitis.springrest.Payloads.AnimalData;
 import com.vtamosaitis.springrest.entity.*;
 import com.vtamosaitis.springrest.repository.*;
@@ -10,9 +12,9 @@ import com.vtamosaitis.springrest.repository.*;
 @Service
 public class AnimalService {
 	
-	private AnimalRepository animalRepository;
-	private SpecieRepository specieRepository;
-	private AnimalEnclosureRepository animalEnclosureRepo;
+	private final AnimalRepository animalRepository;
+	private final SpecieRepository specieRepository;
+	private final AnimalEnclosureRepository animalEnclosureRepo;
 
 	public AnimalService(AnimalRepository animalRepository, 
 			SpecieRepository specieRepository, 
@@ -36,7 +38,7 @@ public class AnimalService {
 		return animalRepository.findAll();
 	}
 	
-	public List<Object> allJoined() {
+	public List<Map<String, String>> allJoined() {
 		return animalRepository.joinedFindAll();
 	}
 	
@@ -66,8 +68,17 @@ public class AnimalService {
 	}
 
 	public Animal makeAnimal(AnimalData animalData) {
-		Specie specie = specieRepository.findById(animalData.specie_id).orElse(null);
-		AnimalEnclosure animalEnclosure = animalEnclosureRepo.findById(animalData.enc_id).orElse(null);
+
+		Specie specie = null;
+		AnimalEnclosure animalEnclosure = null;
+
+		// Allow null for now
+		if (animalData.specie_id != null) {
+			specie = specieRepository.findById(animalData.specie_id).orElse(null);
+		}
+		if (animalData.enc_id != null) {
+			animalEnclosure = animalEnclosureRepo.findById(animalData.enc_id).orElse(null);
+		}
 		return new Animal(animalData.name, specie, animalEnclosure);
 	}
 }

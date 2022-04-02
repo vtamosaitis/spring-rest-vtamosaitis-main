@@ -11,38 +11,39 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Enclosure {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
-	private String enclosureType;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String enclosureType;
+
     @OneToMany(targetEntity = AnimalEnclosure.class, fetch = FetchType.LAZY, mappedBy = "enclosure")
     private List<AnimalEnclosure> animalEnclosures;
 
-	
-	public Enclosure() {}
 
-	public Enclosure(Long id, String enclosureType) {
-		super();
-		this.id = id;
-		this.enclosureType = enclosureType;
-	}
+    public Enclosure() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Enclosure(Long id, String enclosureType) {
+        super();
+        this.id = id;
+        this.enclosureType = enclosureType;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getEnclosureType() {
-		return enclosureType;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setEnclosureType(String enclosureType) {
-		this.enclosureType = enclosureType;
-	}	
-	
+    public String getEnclosureType() {
+        return enclosureType;
+    }
+
+    public void setEnclosureType(String enclosureType) {
+        this.enclosureType = enclosureType;
+    }
+
 }

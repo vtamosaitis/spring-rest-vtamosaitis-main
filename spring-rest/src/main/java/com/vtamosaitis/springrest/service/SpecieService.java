@@ -10,7 +10,7 @@ import com.vtamosaitis.springrest.repository.SpecieRepository;
 @Service
 public class SpecieService {
 	
-	private SpecieRepository specieRepository;
+	private final SpecieRepository specieRepository;
 
 	public SpecieService(SpecieRepository specieRepository) {
 		super();

@@ -10,7 +10,7 @@ import com.vtamosaitis.springrest.repository.AnimalEnclosureRepository;
 @Service
 public class AnimalEnclosureService {
 	
-	private AnimalEnclosureRepository animalEnclosureRepo;
+	private final AnimalEnclosureRepository animalEnclosureRepo;
 
 	public AnimalEnclosureService(AnimalEnclosureRepository animalEnclosureRepo) {
 		super();

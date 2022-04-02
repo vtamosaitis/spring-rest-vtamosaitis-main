@@ -15,42 +15,42 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Specie {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonProperty
-	private Long id;
-	
-	@Column(unique = true, nullable = false)
-	private String specieName;
-	
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "specie")
-    @JsonBackReference
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String specieName;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "specie")
     private List<Animal> animals;
 
-	
-	public Specie() {}
 
-	public Specie(Long id, String specieName) {
-		super();
-		this.id = id;
-		this.specieName = specieName;
-	}
+    public Specie() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Specie(Long id, String specieName) {
+        super();
+        this.id = id;
+        this.specieName = specieName;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getSpecieName() {
-		return specieName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setSpecieName(String specieName) {
-		this.specieName = specieName;
-	}
-	
-	
+    public String getSpecieName() {
+        return specieName;
+    }
+
+    public void setSpecieName(String specieName) {
+        this.specieName = specieName;
+    }
+
+
 }

@@ -9,36 +9,37 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class AnimalEnclosure {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "enclosure_id", referencedColumnName = "id")
-	private Enclosure enclosure;
-	
-	public AnimalEnclosure() {}
-	
-	public AnimalEnclosure(Long id, Enclosure enclosure) {
-		super();
-		this.id = id;
-		this.enclosure = enclosure;
-	}
+    @ManyToOne
+    @JoinColumn(name = "enclosure_id", referencedColumnName = "id")
+    private Enclosure enclosure;
 
-	public Long getId() {
-		return id;
-	}
+    public AnimalEnclosure() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public AnimalEnclosure(Long id, Enclosure enclosure) {
+        super();
+        this.id = id;
+        this.enclosure = enclosure;
+    }
 
-	public Enclosure getEnclosure() {
-		return enclosure;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setEnclosure(Enclosure enclosure) {
-		this.enclosure = enclosure;
-	}
-	
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Enclosure getEnclosure() {
+        return enclosure;
+    }
+
+    public void setEnclosure(Enclosure enclosure) {
+        this.enclosure = enclosure;
+    }
+
 }

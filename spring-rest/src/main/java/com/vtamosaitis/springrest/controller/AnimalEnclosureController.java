@@ -19,31 +19,31 @@ import com.vtamosaitis.springrest.service.AnimalEnclosureService;
 @RequestMapping("/api/animal-enclosure")
 public class AnimalEnclosureController {
 
-	private AnimalEnclosureService animalEnclosureService;
-	
-	public AnimalEnclosureController(AnimalEnclosureService animalEnclosureService) {
-		super();
-		this.animalEnclosureService = animalEnclosureService;
-	}
-	
-	@PostMapping
-	public ResponseEntity<AnimalEnclosure> saveAnimalEnclosure(@RequestBody AnimalEnclosure animalEnclosure) { 
-		return new ResponseEntity<AnimalEnclosure>(animalEnclosureService.saveAnimalEnclosure(animalEnclosure), HttpStatus.CREATED);
-	}
-	
-	@GetMapping
-	public List<AnimalEnclosure> all() {
-		return animalEnclosureService.all();
-	}
-	
-	
-	@GetMapping("{id}")
-	public ResponseEntity<AnimalEnclosure> findById(@PathVariable("id") Long id) {
-		return new ResponseEntity<AnimalEnclosure>(animalEnclosureService.findById(id), HttpStatus.OK);
-	}
-	
-	@PutMapping("{id}")
-	public ResponseEntity<AnimalEnclosure> updateAnimal(@RequestBody AnimalEnclosure animalEnclosure, @PathVariable("id") Long id) {
-		return new ResponseEntity<AnimalEnclosure>(animalEnclosureService.updateAnimalEnclosure(animalEnclosure, id), HttpStatus.OK);
-	}
+    private final AnimalEnclosureService animalEnclosureService;
+
+    public AnimalEnclosureController(AnimalEnclosureService animalEnclosureService) {
+        super();
+        this.animalEnclosureService = animalEnclosureService;
+    }
+
+    @PostMapping
+    public ResponseEntity<AnimalEnclosure> saveAnimalEnclosure(@RequestBody AnimalEnclosure animalEnclosure) {
+        return new ResponseEntity<AnimalEnclosure>(animalEnclosureService.saveAnimalEnclosure(animalEnclosure), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public List<AnimalEnclosure> all() {
+        return animalEnclosureService.all();
+    }
+
+
+    @GetMapping("{id}")
+    public ResponseEntity<AnimalEnclosure> findById(@PathVariable("id") Long id) {
+        return new ResponseEntity<AnimalEnclosure>(animalEnclosureService.findById(id), HttpStatus.OK);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<AnimalEnclosure> updateAnimal(@RequestBody AnimalEnclosure animalEnclosure, @PathVariable("id") Long id) {
+        return new ResponseEntity<AnimalEnclosure>(animalEnclosureService.updateAnimalEnclosure(animalEnclosure, id), HttpStatus.OK);
+    }
 }
